@@ -18,14 +18,14 @@ export default function Welcome({
                         Assessment App
                     </h1>
                     <p className="mb-8 text-gray-600 dark:text-gray-400">
-                        Welcome to the assessment application. This is a barebones
-                        setup for your assessment.
+                        Welcome to the assessment application. This is a
+                        barebones setup for your assessment.
                     </p>
                     <div className="flex flex-col gap-4 sm:flex-row sm:justify-center">
                         {auth.user ? (
                             <Link
                                 href={dashboard()}
-                                className="rounded-md bg-blue-600 px-6 py-3 font-medium text-white hover:bg-blue-700"
+                                className="custom-button rounded-md px-6 py-3 font-medium text-white"
                             >
                                 Go to Dashboard
                             </Link>
@@ -33,7 +33,7 @@ export default function Welcome({
                             <>
                                 <Link
                                     href={login()}
-                                    className="rounded-md bg-blue-600 px-6 py-3 font-medium text-white hover:bg-blue-700"
+                                    className="custom-button rounded-md px-6 py-3 font-medium text-white"
                                 >
                                     Log in
                                 </Link>
