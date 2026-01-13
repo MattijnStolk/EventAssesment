@@ -41,3 +41,16 @@ export interface User {
     updated_at: string;
     [key: string]: unknown; // This allows for additional properties...
 }
+
+export interface Event {
+    id: number;
+    title: string;
+    slug: string;
+    subtitle: string | null;
+    description: string | null;
+    start_date: string;
+    end_date: string | null;
+    location: string | null;
+    hero_image: string | null;
+    is_favorited?: boolean;
+}

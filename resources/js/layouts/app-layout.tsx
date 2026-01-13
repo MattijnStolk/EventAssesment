@@ -1,4 +1,6 @@
-import { dashboard, logout } from '@/routes';
+import { dashboard } from '@/routes';
+import { index as eventsIndex } from '@/routes/events';
+import { show as profileShow } from '@/routes/profile';
 import { type SharedData } from '@/types';
 import { Link, usePage } from '@inertiajs/react';
 import { type ReactNode } from 'react';
@@ -11,37 +13,36 @@ export default function AppLayout({ children }: AppLayoutProps) {
     const { auth } = usePage<SharedData>().props;
 
     return (
-        <div className="min-h-screen bg-gray-50 dark:bg-gray-900">
-            <nav className="border-b border-gray-200 bg-white dark:border-gray-800 dark:bg-gray-800">
+        <div className="min-h-screen bg-cream dark:bg-forest">
+            <nav className="border-b border-olive/20 bg-cream drop-shadow-md dark:border-olive/30 dark:bg-forest">
                 <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
                     <div className="flex h-16 items-center justify-between">
                         <div className="flex items-center">
                             <Link
-                                href={dashboard()}
-                                className="text-xl font-semibold text-gray-900 dark:text-white"
+                                href={dashboard.url()}
+                                className="text-xl font-semibold text-text-dark dark:text-cream"
                             >
                                 Assessment App
                             </Link>
                         </div>
                         {auth.user && (
                             <div className="flex items-center gap-4">
-                                <span className="text-sm text-gray-700 dark:text-gray-300">
-                                    {auth.user.name}
-                                </span>
-                                <form method="POST" action={logout().url}>
-                                    <button
-                                        type="submit"
-                                        className="rounded-md bg-red-600 px-4 py-2 text-sm font-medium text-white hover:bg-red-700"
-                                    >
-                                        Logout
-                                    </button>
-                                </form>
+                                <Link href={eventsIndex.url()}>
+                                    <span className="text-sm text-text-muted dark:text-cream/80 hover:text-primary dark:hover:text-accent transition-colors duration-200">
+                                        Events
+                                    </span>
+                                </Link>
+                                <Link href={profileShow.url()}>
+                                    <span className="text-sm text-text-muted dark:text-cream/80 hover:text-primary dark:hover:text-accent transition-colors duration-200">
+                                        Profile
+                                    </span>
+                                </Link>
                             </div>
                         )}
                     </div>
                 </div>
             </nav>
-            <main>{children}</main>
+            <main className="mx-auto max-w-7xl">{children}</main>
         </div>
     );
 }

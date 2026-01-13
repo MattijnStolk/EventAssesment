@@ -1,9 +1,9 @@
+import Button from '@/components/button';
+import FormInput from '@/components/form-input';
+import AuthLayout from '@/layouts/auth-layout';
 import { login } from '@/routes';
 import { store } from '@/routes/register';
 import { Form, Head, Link } from '@inertiajs/react';
-
-import InputError from '@/components/input-error';
-import AuthLayout from '@/layouts/auth-layout';
 
 export default function Register() {
     return (
@@ -13,7 +13,8 @@ export default function Register() {
         >
             <Head title="Register" />
             <Form
-                {...store.form()}
+                method="POST"
+                action={store.url()}
                 resetOnSuccess={['password', 'password_confirmation']}
                 disableWhileProcessing
                 className="flex flex-col gap-6"
@@ -21,108 +22,71 @@ export default function Register() {
                 {({ processing, errors }) => (
                     <>
                         <div className="grid gap-6">
-                            <div className="grid gap-2">
-                                <label
-                                    htmlFor="name"
-                                    className="text-sm font-medium text-gray-700 dark:text-gray-300"
-                                >
-                                    Name
-                                </label>
-                                <input
-                                    id="name"
-                                    type="text"
-                                    required
-                                    autoFocus
-                                    tabIndex={1}
-                                    autoComplete="name"
-                                    name="name"
-                                    placeholder="Full name"
-                                    className="rounded-md border border-gray-300 px-3 py-2 focus:border-blue-500 focus:outline-none focus:ring-1 focus:ring-blue-500 dark:border-gray-600 dark:bg-gray-700 dark:text-white"
-                                />
-                                <InputError
-                                    message={errors.name}
-                                    className="mt-2"
-                                />
-                            </div>
+                            <FormInput
+                                id="name"
+                                label="Name"
+                                type="text"
+                                name="name"
+                                required
+                                autoFocus
+                                tabIndex={1}
+                                autoComplete="name"
+                                placeholder="Full name"
+                                error={errors.name}
+                            />
 
-                            <div className="grid gap-2">
-                                <label
-                                    htmlFor="email"
-                                    className="text-sm font-medium text-gray-700 dark:text-gray-300"
-                                >
-                                    Email address
-                                </label>
-                                <input
-                                    id="email"
-                                    type="email"
-                                    required
-                                    tabIndex={2}
-                                    autoComplete="email"
-                                    name="email"
-                                    placeholder="email@example.com"
-                                    className="rounded-md border border-gray-300 px-3 py-2 focus:border-blue-500 focus:outline-none focus:ring-1 focus:ring-blue-500 dark:border-gray-600 dark:bg-gray-700 dark:text-white"
-                                />
-                                <InputError message={errors.email} />
-                            </div>
+                            <FormInput
+                                id="email"
+                                label="Email address"
+                                type="email"
+                                name="email"
+                                required
+                                tabIndex={2}
+                                autoComplete="email"
+                                placeholder="email@example.com"
+                                error={errors.email}
+                            />
 
-                            <div className="grid gap-2">
-                                <label
-                                    htmlFor="password"
-                                    className="text-sm font-medium text-gray-700 dark:text-gray-300"
-                                >
-                                    Password
-                                </label>
-                                <input
-                                    id="password"
-                                    type="password"
-                                    required
-                                    tabIndex={3}
-                                    autoComplete="new-password"
-                                    name="password"
-                                    placeholder="Password"
-                                    className="rounded-md border border-gray-300 px-3 py-2 focus:border-blue-500 focus:outline-none focus:ring-1 focus:ring-blue-500 dark:border-gray-600 dark:bg-gray-700 dark:text-white"
-                                />
-                                <InputError message={errors.password} />
-                            </div>
+                            <FormInput
+                                id="password"
+                                label="Password"
+                                type="password"
+                                name="password"
+                                required
+                                tabIndex={3}
+                                autoComplete="new-password"
+                                placeholder="Password"
+                                error={errors.password}
+                            />
 
-                            <div className="grid gap-2">
-                                <label
-                                    htmlFor="password_confirmation"
-                                    className="text-sm font-medium text-gray-700 dark:text-gray-300"
-                                >
-                                    Confirm password
-                                </label>
-                                <input
-                                    id="password_confirmation"
-                                    type="password"
-                                    required
-                                    tabIndex={4}
-                                    autoComplete="new-password"
-                                    name="password_confirmation"
-                                    placeholder="Confirm password"
-                                    className="rounded-md border border-gray-300 px-3 py-2 focus:border-blue-500 focus:outline-none focus:ring-1 focus:ring-blue-500 dark:border-gray-600 dark:bg-gray-700 dark:text-white"
-                                />
-                                <InputError
-                                    message={errors.password_confirmation}
-                                />
-                            </div>
+                            <FormInput
+                                id="password_confirmation"
+                                label="Confirm password"
+                                type="password"
+                                name="password_confirmation"
+                                required
+                                tabIndex={4}
+                                autoComplete="new-password"
+                                placeholder="Confirm password"
+                                error={errors.password_confirmation}
+                            />
 
-                            <button
+                            <Button
                                 type="submit"
-                                className="mt-2 w-full rounded-md bg-blue-600 px-4 py-2 font-medium text-white hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 disabled:opacity-50"
+                                className="mt-2 w-full"
                                 tabIndex={5}
                                 disabled={processing}
                                 data-test="register-user-button"
                             >
                                 {processing ? 'Creating account...' : 'Create account'}
-                            </button>
+                            </Button>
                         </div>
 
-                        <div className="text-center text-sm text-gray-600 dark:text-gray-400">
+                        <div className="text-center text-sm text-text-muted dark:text-cream/70">
                             Already have an account?{' '}
                             <Link
                                 href={login()}
-                                className="text-blue-600 hover:text-blue-800 dark:text-blue-400"
+                                className="text-primary hover:text-primary-hover dark:text-accent"
                                 tabIndex={6}
                             >
                                 Log in

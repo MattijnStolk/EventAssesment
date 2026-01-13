@@ -14,6 +14,16 @@ class User extends Authenticatable
     use HasFactory, Notifiable, TwoFactorAuthenticatable;
 
     /**
+     * The events that the user has favorited.
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsToMany<Event, $this>
+     */
+    public function favoriteEvents(): \Illuminate\Database\Eloquent\Relations\BelongsToMany
+    {
+        return $this->belongsToMany(Event::class)->withTimestamps();
+    }
+
+    /**
      * The attributes that are mass assignable.
      *
      * @var list<string>

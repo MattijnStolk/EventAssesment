@@ -16,3 +16,11 @@ export function isSameUrl(
 export function resolveUrl(url: NonNullable<InertiaLinkProps['href']>): string {
     return typeof url === 'string' ? url : url.url;
 }
+
+export function formatDate(date: string, format: 'short' | 'long' = 'short'): string {
+    return new Date(date).toLocaleDateString('nl-NL', 
+        format === 'short' 
+            ? { year: 'numeric', month: 'short', day: 'numeric' }
+            : { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' }
+    );
+}
