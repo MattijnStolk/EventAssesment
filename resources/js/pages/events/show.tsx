@@ -1,9 +1,11 @@
 import Button from '@/components/button';
 import EventHeroImage from '@/components/eventHeroImage';
+import { StarIcon } from '@/components/star';
 import AppLayout from '@/layouts/app-layout';
-import { formatDate } from '@/lib/utils';
+import { cn, formatDate } from '@/lib/utils';
 import { type Event } from '@/types';
-import { Head, Link } from '@inertiajs/react';
+import { Head, Link, router } from '@inertiajs/react';
+import { useState } from 'react';
 
 function formatGoogleCalendarDate(dateString: string): string {
     const date = new Date(dateString);
@@ -18,11 +20,29 @@ interface Props {
 }
 
 export default function EventShow({ event }: Props) {
+    const [isFavorited, setIsFavorited] = useState(event.is_favorited ?? false);
+
+    const handleFavoriteClick = () => {
+        setIsFavorited(!isFavorited);
+        
+        router.post(
+            `/events/${event.slug}/favorite`,
+            {},
+            {
+                preserveScroll: true,
+                preserveState: true,
+                onError: () => {
+                    setIsFavorited(isFavorited);
+                },
+            },
+        );
+    };
+
     return (
         <AppLayout>
             <Head title={event.title} />
 
-            <div className="min-h-screen bg-cream dark:bg-forest">
+            <div className="min-h-screen bg-bg-light dark:bg-bg-dark">
                 {/* Hero */}
                 {event.hero_image && (
                         <EventHeroImage hero_image={event.hero_image} title={event.title} />
@@ -33,22 +53,45 @@ export default function EventShow({ event }: Props) {
                     <div>
                         <Link
                             href="/events"
-                            className="mb-6 inline-flex items-center text-sm text-text-muted hover:text-text-dark dark:text-cream/70 dark:hover:text-cream"
+                            className="mb-6 inline-flex items-center text-sm text-text-muted hover:text-text-dark dark:text-text-light/70 dark:hover:text-text-light"
                         >
                             ← Back to events
                         </Link>
 
-                        <h1 className="text-4xl font-bold text-text-dark dark:text-cream">
-                            {event.title}
-                        </h1>
+                        <div className="flex items-start justify-between gap-4">
+                            <h1 className="text-4xl font-bold text-text-dark dark:text-text-light">
+                                {event.title}
+                            </h1>
+
+                            <Button
+                                variant="ghost"
+                                onClick={handleFavoriteClick}
+                                className={cn(
+                                    'shrink-0 rounded-full',
+                                    isFavorited && 'bg-accent/20 text-accent hover:bg-accent/30 dark:bg-accent/30 dark:hover:bg-accent/40',
+                                )}
+                                aria-label={isFavorited ? 'Verwijderen uit favorieten' : 'Toevoegen aan favorieten'}
+                            >
+                                <StarIcon
+                                    filled={isFavorited}
+                                    className={cn(
+                                        'h-5 w-5 transition-colors',
+                                        isFavorited ? 'text-accent' : 'text-current',
+                                    )}
+                                />
+                                <span className="hidden sm:inline">
+                                    Favoriet
+                                </span>
+                            </Button>
+                        </div>
 
                         {event.subtitle && (
-                            <p className="mt-2 text-xl text-text-muted dark:text-cream/70">
+                            <p className="mt-2 text-xl text-text-muted dark:text-text-light/70">
                                 {event.subtitle}
                             </p>
                         )}
                     </div>
-                    <div className="mt-6 flex flex-wrap gap-4 text-sm text-text-muted dark:text-cream/70">
+                    <div className="mt-6 flex flex-wrap gap-4 text-sm text-text-muted dark:text-text-light/70">
                         {event.location && (
                             <>
                                 <div className="flex items-center gap-1">
@@ -66,7 +109,7 @@ export default function EventShow({ event }: Props) {
 
                     {event.description && (
                         <div className="prose prose-lg dark:prose-invert mt-8 max-w-none">
-                            <p className="whitespace-pre-line text-text-dark dark:text-cream/90">
+                            <p className="whitespace-pre-line text-text-dark dark:text-text-light/90">
                                 {event.description}
                             </p>
                         </div>

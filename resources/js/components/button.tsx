@@ -2,12 +2,13 @@ import { cn } from '@/lib/utils';
 import { Link, type InertiaLinkProps } from '@inertiajs/react';
 import { AnchorHTMLAttributes, ButtonHTMLAttributes } from 'react';
 
-type Variant = 'primary' | 'secondary' | 'outline' | 'danger';
+type Variant = 'primary' | 'secondary' | 'outline' | 'ghost' | 'danger';
 
 const variantStyles: Record<Variant, string> = {
     primary: 'bg-primary text-white hover:bg-primary-hover',
     secondary: 'bg-secondary text-white hover:bg-secondary-hover',
-    outline: 'border border-olive/30 bg-cream text-text-dark hover:bg-olive/10 dark:border-olive/30 dark:bg-forest/50 dark:text-cream/70 dark:hover:bg-olive/20',
+    outline: 'border border-secondary/30 bg-bg-light text-text-dark hover:bg-secondary/10 dark:border-secondary/30 dark:bg-bg-dark/50 dark:text-text-light/70 dark:hover:bg-secondary/20',
+    ghost: 'bg-secondary/10 text-text-muted hover:bg-secondary/20 dark:bg-secondary/20 dark:text-text-light/70 dark:hover:bg-secondary/30 active:scale-95',
     danger: 'bg-danger text-white hover:bg-danger-hover',
 };
 

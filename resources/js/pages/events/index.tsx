@@ -13,12 +13,12 @@ export default function EventsIndex({ events }: Props) {
         <AppLayout>
             <Head title="Events" />
 
-            <div className="min-h-screen bg-cream p-6 dark:bg-forest">
+            <div className="min-h-screen bg-bg-light p-6 dark:bg-bg-dark">
                 <div className="mx-auto">
                     <PageHeading>Events</PageHeading>
 
                     {events.length === 0 ? (
-                        <p className="text-center text-text-muted dark:text-cream/70">
+                        <p className="text-center text-text-muted dark:text-text-light/70">
                             No events found.
                         </p>
                     ) : (

@@ -14,7 +14,7 @@ export default function ProfileShow() {
             <Head title="Profile" />
             <div className="flex flex-col gap-5 p-6">
                 <PageHeading className="mb-0">Hi! {auth.user.name}</PageHeading>
-                <p className="text-text-dark dark:text-cream/70">
+                <p className="text-text-dark dark:text-text-light/70">
                     Welcome to your profile. This is a barebones assessment app.
                 </p>
                 <div className="flex gap-2">

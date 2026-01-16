@@ -29,7 +29,7 @@ export default function ResetPassword({ token, email }: ResetPasswordProps) {
                         <div className="grid gap-2">
                             <label
                                 htmlFor="email"
-                                className="text-sm font-medium text-text-dark dark:text-cream"
+                                className="text-sm font-medium text-text-dark dark:text-text-light"
                             >
                                 Email
                             </label>
@@ -40,7 +40,7 @@ export default function ResetPassword({ token, email }: ResetPasswordProps) {
                                 autoComplete="email"
                                 value={email}
                                 readOnly
-                                className="mt-1 block w-full rounded-md border border-olive/30 bg-cream px-3 py-2 dark:border-olive/30 dark:bg-forest/50 dark:text-cream/60"
+                                className="mt-1 block w-full rounded-md border border-secondary/30 bg-bg-light px-3 py-2 dark:border-secondary/30 dark:bg-bg-dark/50 dark:text-text-light/60"
                             />
                             <InputError message={errors.email} />
                         </div>

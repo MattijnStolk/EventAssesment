@@ -13,12 +13,12 @@ export default function Welcome({
     return (
         <>
             <Head title="Welcome" />
-            <div className="flex min-h-screen flex-col items-center justify-center bg-cream p-6 dark:bg-forest">
+            <div className="flex min-h-screen flex-col items-center justify-center bg-bg-light p-6 dark:bg-bg-dark">
                 <div className="w-full max-w-md text-center">
-                    <h1 className="mb-4 text-4xl font-bold text-text-dark dark:text-cream">
+                    <h1 className="mb-4 text-4xl font-bold text-text-dark dark:text-text-light">
                         Assessment App
                     </h1>
-                    <p className="mb-8 text-text-dark dark:text-cream/70">
+                    <p className="mb-8 text-text-dark dark:text-text-light/70">
                         Welcome to the assessment application. This is a
                         barebones setup for your assessment.
                     </p>

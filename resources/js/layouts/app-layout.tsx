@@ -13,14 +13,14 @@ export default function AppLayout({ children }: AppLayoutProps) {
     const { auth } = usePage<SharedData>().props;
 
     return (
-        <div className="min-h-screen bg-cream dark:bg-forest">
-            <nav className="border-b border-olive/20 bg-cream drop-shadow-md dark:border-olive/30 dark:bg-forest">
+        <div className="min-h-screen bg-bg-light dark:bg-bg-dark">
+            <nav className="border-b border-secondary/20 bg-bg-light drop-shadow-md dark:border-secondary/30 dark:bg-bg-dark">
                 <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
                     <div className="flex h-16 items-center justify-between">
                         <div className="flex items-center">
                             <Link
                                 href={dashboard.url()}
-                                className="text-xl font-semibold text-text-dark dark:text-cream"
+                                className="text-xl font-semibold text-text-dark dark:text-text-light"
                             >
                                 Assessment App
                             </Link>
@@ -28,12 +28,12 @@ export default function AppLayout({ children }: AppLayoutProps) {
                         {auth.user && (
                             <div className="flex items-center gap-4">
                                 <Link href={eventsIndex.url()}>
-                                    <span className="text-sm text-text-muted dark:text-cream/80 hover:text-primary dark:hover:text-accent transition-colors duration-200">
+                                    <span className="text-sm text-text-muted hover:text-primary dark:text-text-light/80 dark:hover:text-accent transition-colors duration-200">
                                         Events
                                     </span>
                                 </Link>
                                 <Link href={profileShow.url()}>
-                                    <span className="text-sm text-text-muted dark:text-cream/80 hover:text-primary dark:hover:text-accent transition-colors duration-200">
+                                    <span className="text-sm text-text-muted hover:text-primary dark:text-text-light/80 dark:hover:text-accent transition-colors duration-200">
                                         Profile
                                     </span>
                                 </Link>

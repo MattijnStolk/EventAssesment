@@ -17,7 +17,7 @@ export default function Dashboard({ favoriteEvents }: Props) {
                 <PageHeading>Your Favorite Events</PageHeading>
 
                 {favoriteEvents.length === 0 && (
-                    <p className="mt-4 text-text-muted dark:text-cream/60">
+                    <p className="mt-4 text-text-muted dark:text-text-light/60">
                         You haven't favorited any events yet. Browse events to
                         add some!
                     </p>

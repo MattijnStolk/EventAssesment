@@ -24,7 +24,7 @@ export default function FormInput({
                 <label
                     htmlFor={id}
                     className={cn(
-                        'text-sm font-medium text-text-dark dark:text-cream',
+                        'text-sm font-medium text-text-dark dark:text-text-light',
                         labelClassName
                     )}
                 >
@@ -35,7 +35,7 @@ export default function FormInput({
             <input
                 id={id}
                 className={cn(
-                    'rounded-md border px-3 py-2 border-olive/30 focus:border-primary focus:ring-1 focus:ring-primary focus:outline-none dark:border-olive/30 dark:bg-forest dark:text-cream',
+                    'rounded-md border px-3 py-2 border-secondary/30 focus:border-primary focus:ring-1 focus:ring-primary focus:outline-none dark:border-secondary/30 dark:bg-bg-dark dark:text-text-light',
                     className
                 )}
                 {...props}

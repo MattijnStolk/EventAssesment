@@ -19,7 +19,7 @@ export default function FormCheckbox({
                 id={id}
                 type="checkbox"
                 className={cn(
-                    'h-4 w-4 rounded border-olive text-primary accent-primary',
+                    'h-4 w-4 rounded border-secondary text-primary accent-primary',
                     className
                 )}
                 {...props}
@@ -27,7 +27,7 @@ export default function FormCheckbox({
             <label
                 htmlFor={id}
                 className={cn(
-                    'text-sm text-text-dark dark:text-cream',
+                    'text-sm text-text-dark dark:text-text-light',
                     labelClassName
                 )}
             >

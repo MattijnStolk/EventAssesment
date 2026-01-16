@@ -1,13 +1,6 @@
 @import 'tailwindcss';
 
 @theme {
-    /* Olive Garden Feast Color Palette */
-    --color-olive: #606c38;
-    --color-forest: #283618;
-    --color-cream: #fefae0;
-    --color-caramel: #dda15e;
-    --color-copper: #bc6c25;
-
     /* Semantic Colors */
     --color-primary: #bc6c25;
     --color-primary-hover: #a55d1f;

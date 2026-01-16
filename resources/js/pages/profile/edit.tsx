@@ -58,7 +58,7 @@ export default function ProfileEdit({ user }: Props) {
 
                                 <Link
                                     href={show.url()}
-                                    className="text-sm text-text-muted hover:text-text-dark dark:text-cream/70 dark:hover:text-cream"
+                                    className="text-sm text-text-muted hover:text-text-dark dark:text-text-light/70 dark:hover:text-text-light"
                                 >
                                     Cancel
                                 </Link>

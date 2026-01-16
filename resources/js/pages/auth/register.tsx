@@ -82,7 +82,7 @@ export default function Register() {
                             </Button>
                         </div>
 
-                        <div className="text-center text-sm text-text-muted dark:text-cream/70">
+                        <div className="text-center text-sm text-text-muted dark:text-text-light/70">
                             Already have an account?{' '}
                             <Link
                                 href={login()}
