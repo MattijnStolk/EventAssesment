@@ -44,8 +44,8 @@ export default function EventShow({ event }: Props) {
 
             <div className="min-h-screen bg-bg-light dark:bg-bg-dark">
                 {/* Hero */}
-                {event.hero_image && (
-                        <EventHeroImage hero_image={event.hero_image} title={event.title} />
+                {event.hero_image_url && (
+                        <EventHeroImage hero_image_url={event.hero_image_url} title={event.title} />
                 )}
 
                 {/* Content */}

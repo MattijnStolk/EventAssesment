@@ -30,7 +30,7 @@ export default function Dashboard({ favoriteEvents }: Props) {
                             subtitle={event.subtitle}
                             start_date={event.start_date}
                             location={event.location}
-                            hero_image={event.hero_image}
+                            hero_image_url={event.hero_image_url}
                             is_favorited={true}
                             slug={event.slug}
                             showFavorite={true}

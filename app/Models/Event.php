@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Str;
 
 class Event extends Model
@@ -26,6 +27,20 @@ class Event extends Model
         'start_date' => 'datetime',
         'end_date' => 'datetime',
     ];
+
+    protected $appends = ['hero_image_url'];
+
+    /**
+     * Append the full event image url to the model.
+     */
+    public function getHeroImageUrlAttribute(): ?string
+    {
+        if (empty($this->hero_image)) {
+            return null;
+        }
+
+        return Storage::disk('public')->url($this->hero_image);
+    }
 
     /**
      * Boot the model and auto-generate slug from title.

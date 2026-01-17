@@ -52,5 +52,6 @@ export interface Event {
     end_date: string | null;
     location: string | null;
     hero_image: string | null;
+    hero_image_url: string | null;
     is_favorited?: boolean;
 }

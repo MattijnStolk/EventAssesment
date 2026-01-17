@@ -11,7 +11,7 @@ interface EventCardProps {
     href?: string;
     start_date?: string;
     location?: string | null;
-    hero_image?: string | null;
+    hero_image_url?: string | null;
     is_favorited?: boolean;
     showFavorite?: boolean;
 }
@@ -21,7 +21,7 @@ export default function EventCard({
     subtitle,
     start_date,
     location,
-    hero_image,
+    hero_image_url,
     is_favorited,
     slug,
     href,
@@ -92,9 +92,9 @@ export default function EventCard({
             )}
 
             <div className="h-48 overflow-hidden">
-                {hero_image ? (
+                {hero_image_url ? (
                     <img
-                        src={hero_image}
+                        src={hero_image_url}
                         alt={title}
                         className="h-full w-full object-cover transition group-hover:scale-105"
                     />

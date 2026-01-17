@@ -1,13 +1,13 @@
-type Image = {
-    hero_image: string;
+type EventHeroImageProps = {
+    hero_image_url: string;
     title: string;
 };
 
-export default function EventHeroImage({ hero_image, title }: Image) {
+export default function EventHeroImage({ hero_image_url, title }: EventHeroImageProps) {
     return (
         <div className="relative h-96 w-full overflow-hidden">
             <img
-                src={hero_image}
+                src={hero_image_url}
                 alt={title}
                 className="h-full w-full object-cover"
             />
