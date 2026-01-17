@@ -123,6 +123,7 @@ Ik heb de stukken code die ik veel zou hergebruiken opgedeeld in componenten, hi
 - SEO optimalisaties, Open Graph (og) metadata per evenement.
 - Paginatie voor als er meerdere events bij komen.
 - Categorieën en filtering op categorieën.
+- Git rules toepassen (branch namen en protected main branch)
 
 ## AI
 
