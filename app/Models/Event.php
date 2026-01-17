@@ -39,7 +39,8 @@ class Event extends Model
             return null;
         }
 
-        return Storage::disk('public')->url($this->hero_image);
+        // Use relative URL so it works on any domain (ngrok, production, etc.)
+        return '/storage/' . $this->hero_image;
     }
 
     /**
