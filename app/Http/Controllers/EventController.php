@@ -17,10 +17,17 @@ class EventController extends Controller
         $user = $request->user();
         $favoriteIds = $user ? $user->favoriteEvents()->pluck('events.id')->toArray() : [];
 
-        $events = Event::all()->map(function ($event) use ($favoriteIds) {
-            $event->is_favorited = in_array($event->id, $favoriteIds);
-            return $event;
-        });
+        // Only return fields needed for the event cards, as per intertia docs
+        $events = Event::all()->map(fn (Event $event) => [
+            'id' => $event->id,
+            'title' => $event->title,
+            'slug' => $event->slug,
+            'subtitle' => $event->subtitle,
+            'start_date' => $event->start_date,
+            'location' => $event->location,
+            'hero_image_url' => $event->hero_image_url,
+            'is_favorited' => in_array($event->id, $favoriteIds),
+        ]);
 
         return Inertia::render('events/index', [
             'events' => $events,
@@ -33,10 +40,20 @@ class EventController extends Controller
     public function show(Request $request, Event $event): Response
     {
         $user = $request->user();
-        $event->is_favorited = $user ? $user->favoriteEvents()->where('event_id', $event->id)->exists() : false;
 
+        // Only return fields needed for the event detail page, as per intertia docs
         return Inertia::render('events/show', [
-            'event' => $event,
+            'event' => [
+                'title' => $event->title,
+                'slug' => $event->slug,
+                'subtitle' => $event->subtitle,
+                'description' => $event->description,
+                'start_date' => $event->start_date,
+                'end_date' => $event->end_date,
+                'location' => $event->location,
+                'hero_image_url' => $event->hero_image_url,
+                'is_favorited' => $user ? $user->favoriteEvents()->where('event_id', $event->id)->exists() : false,
+            ],
         ]);
     }
 }
