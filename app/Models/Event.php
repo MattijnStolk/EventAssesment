@@ -39,7 +39,6 @@ class Event extends Model
             return null;
         }
 
-        // Use relative URL so it works on any domain (ngrok, production, etc.)
         return '/storage/' . $this->hero_image;
     }
 
